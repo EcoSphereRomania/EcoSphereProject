@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSphere - Plată securizată</title>
+    <!-- Google Fonts pentru estetică modernă -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <!-- Include Paymentwall Widget CSS -->
+    <link rel="stylesheet" href="https://api.paymentwall.com/css/paymentwall.css">
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <!-- Header -->
+<header>
+    <a href="index.html">
+        <img src="images/logo.png" alt="EcoSphere Logo">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Acasă</a></li>
+            <li><a href="index.html#features">Caracteristici</a></li>
+            <li><a href="index.html#team">Echipa</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="payment.html">Plată</a></li>
+            <!-- Shopping Bag Link -->
+            <li>
+                <a role="button" id="globalnav-menubutton-link-bag" href="#" aria-label="Shopping Bag" data-globalnav-item-name="bag" data-topnav-flyout-trigger-regular="" data-topnav-flyout-trigger-compact="" data-analytics-title="open - bag" class="globalnav-link globalnav-link-bag" data-autom="gn_bag" aria-expanded="false" data-analytics-click="prop3:close - bag">
+                    <span class="globalnav-image-regular">
+                        <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m11.3535 16.0283h-1.0205a3.4229 3.4229 0 0 0 -3.333-2.9648 3.4229 3.4229 0 0 0 -3.333 2.9648h-1.02a2.1184 2.1184 0 0 0 -2.117 2.1162v7.7155a2.1186 2.1186 0 0 0 2.1162 2.1167h8.707a2.1186 2.1186 0 0 0 2.1168-2.1167v-7.7155a2.1184 2.1184 0 0 0 -2.1165-2.1162zm-4.3535-1.8652a2.3169 2.3169 0 0 1 2.2222 1.8652h-4.4444a2.3169 2.3169 0 0 1 2.2222-1.8652zm5.37 11.6969a1.0182 1.0182 0 0 1 -1.0166 1.0171h-8.7069a1.0182 1.0182 0 0 1 -1.0165-1.0171v-7.7155a1.0178 1.0178 0 0 1 1.0166-1.0166h8.707a1.0178 1.0178 0 0 1 1.0164 1.0166z"></path>
+                        </svg>
+                    </span>
+                    <span id="cart-item-count" class="cart-item-count">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Cart Popup -->
+    <div id="cart-popup" class="popup">
+        <div class="popup-content cart-popup-content">
+            <span class="popup-close">×</span>
+            <h3><span id="cart-count">0</span> ITEM(S) IN CART</h3>
+            <div id="cart-popup-items" class="cart-popup-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+                <span>TOTAL</span>
+                <span id="cart-total-price">0 Lei</span>
+            </div>
+            <div class="cart-buttons">
+                <button id="view-cart-btn" class="cart-btn">VEZI COȘ</button>
+                <button id="clear-cart-btn" class="cart-btn clear-cart-btn">ȘTERGE PRODUSELE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="container">
+        <h1>Plată securizată</h1>
+
+        <!-- Cart Items Display -->
+        <div id="cart-items" class="cart-items">
+            <h2>Produse în coș</h2>
+            <div id="cart-item-details" class="cart-item-details">
+                <!-- Product will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Informații despre destinatar și livrare -->
+        <h2>Informații despre destinatar și livrare</h2>
+        <form>
+            <div class="form-group two-columns">
+                <div>
+                    <label for="delivery-city">Localitate *</label>
+                    <select id="delivery-city" required>
+                        <option value="">Alege localitatea</option>
+                        <!-- Județul Alba -->
+                        <optgroup label="Alba">
+                            <option value="Alba Iulia">Alba Iulia</option>
+                            <option value="Sebeș">Sebeș</option>
+                            <option value="Aiud">Aiud</option>
+                            <option value="Cugir">Cugir</option>
+                            <option value="Blaj">Blaj</option>
+                        </optgroup>
+                        <!-- Județul Arad -->
+                        <optgroup label="Arad">
+                            <option value="Arad">Arad</option>
+                            <option value="Ineu">Ineu</option>
+                            <option value="Lipova">Lipova</option>
+                            <option value="Pecica">Pecica</option>
+                        </optgroup>
+                        <!-- Județul Argeș -->
+                        <optgroup label="Argeș">
+                            <option value="Pitești">Pitești</option>
+                            <option value="Câmpulung">Câmpulung</option>
+                            <option value="Curtea de Argeș">Curtea de Argeș</option>
+                            <option value="Mioveni">Mioveni</option>
+                        </optgroup>
+                        <!-- Județul Bacău -->
+                        <optgroup label="Bacău">
+                            <option value="Bacău">Bacău</option>
+                            <option value="Onești">Onești</option>
+                            <option value="Moinești">Moinești</option>
+                            <option value="Comănești">Comănești</option>
+                        </optgroup>
+                        <!-- Județul Bihor -->
+                        <optgroup label="Bihor">
+                            <option value="Oradea">Oradea</option>
+                            <option value="Salonta">Salonta</option>
+                            <option value="Marghita">Marghita</option>
+                            <option value="Beiuș">Beiuș</option>
+                        </optgroup>
+                        <!-- Județul Bistrița-Năsăud -->
+                        <optgroup label="Bistrița-Năsăud">
+                            <option value="Bistrița">Bistrița</option>
+                            <option value="Năsăud">Năsăud</option>
+                            <option value="Beclean">Beclean</option>
+                        </optgroup>
+                        <!-- Județul Botoșani -->
+                        <optgroup label="Botoșani">
+                            <option value="Botoșani">Botoșani</option>
+                            <option value="Dorohoi">Dorohoi</option>
+                            <option value="Darabani">Darabani</option>
+                        </optgroup>
+                        <!-- Județul Brașov -->
+                        <optgroup label="Brașov">
+                            <option value="Brașov">Brașov</option>
+                            <option value="Făgăraș">Făgăraș</option>
+                            <option value="Săcele">Săcele</option>
+                            <option value="Codlea">Codlea</option>
+                        </optgroup>
+                        <!-- Județul Brăila -->
+                        <optgroup label="Brăila">
+                            <option value="Brăila">Brăila</option>
+                            <option value="Ianca">Ianca</option>
+                            <option value="Făurei">Făurei</option>
+                        </optgroup>
+                        <!-- Județul București -->
+                        <optgroup label="București">
+                            <option value="București">București</option>
+                            <option value="București (Afumați)">București (Afumați)</option>
+                            <option value="București (Băneasa)">București (Băneasa)</option>
+                            <option value="București (com. Bragadiru)">București (com. Bragadiru)</option>
+                            <option value="București (com. Pipera)">București (com. Pipera)</option>
+                            <option value="București (com. Voluntari)">București (com. Voluntari)</option>
+                            <option value="București (Corbeanca)">București (Corbeanca)</option>
+                            <option value="București (Jilava)">București (Jilava)</option>
+                            <option value="București (Măgurele)">București (Măgurele)</option>
+                            <option value="București (Mogoșoaia)">București (Mogoșoaia)</option>
+                            <option value="București (Otopeni)">București (Otopeni)</option>
+                            <option value="București (Pantelimon)">București (Pantelimon)</option>
+                            <option value="București (Popești-Leordeni)">București (Popești-Leordeni)</option>
+                            <option value="București (Snagov)">București (Snagov)</option>
+                            <option value="București (Ștefăneștii de Jos)">București (Ștefăneștii de Jos)</option>
+                            <option value="București (Tunari)">București (Tunari)</option>
+                        </optgroup>
+                        <!-- Județul Buzău -->
+                        <optgroup label="Buzău">
+                            <option value="Buzău">Buzău</option>
+                            <option value="Râmnicu Sărat">Râmnicu Sărat</option>
+                            <option value="Nehoiu">Nehoiu</option>
+                        </optgroup>
+                        <!-- Județul Caraș-Severin -->
+                        <optgroup label="Caraș-Severin">
+                            <option value="Reșița">Reșița</option>
+                            <option value="Caransebeș">Caransebeș</option>
+                            <option value="Oravița">Oravița</option>
+                        </optgroup>
+                        <!-- Județul Călărași -->
+                        <optgroup label="Călărași">
+                            <option value="Călărași">Călărași</option>
+                            <option value="Oltenița">Oltenița</option>
+                            <option value="Lehliu Gară">Lehliu Gară</option>
+                        </optgroup>
+                        <!-- Județul Cluj -->
+                        <optgroup label="Cluj">
+                            <option value="Cluj-Napoca">Cluj-Napoca</option>
+                            <option value="Turda">Turda</option>
+                            <option value="Dej">Dej</option>
+                            <option value="Câmpia Turzii">Câmpia Turzii</option>
+                        </optgroup>
+                        <!-- Județul Constanța -->
+                        <optgroup label="Constanța">
+                            <option value="Constanța">Constanța</option>
+                            <option value="Mangalia">Mangalia</option>
+                            <option value="Medgidia">Medgidia</option>
+                            <option value="Năvodari">Năvodari</option>
+                        </optgroup>
+                        <!-- Județul Covasna -->
+                        <optgroup label="Covasna">
+                            <option value="Sfântu Gheorghe">Sfântu Gheorghe</option>
+                            <option value="Târgu Secuiesc">Târgu Secuiesc</option>
+                            <option value="Covasna">Covasna</option>
+                        </optgroup>
+                        <!-- Județul Dâmbovița -->
+                        <optgroup label="Dâmbovița">
+                            <option value="Târgoviște">Târgoviște</option>
+                            <option value="Moreni">Moreni</option>
+                            <option value="Pucioasa">Pucioasa</option>
+                        </optgroup>
+                        <!-- Județul Dolj -->
+                        <optgroup label="Dolj">
+                            <option value="Craiova">Craiova</option>
+                            <option value="Băilești">Băilești</option>
+                            <option value="Calafat">Calafat</option>
+                        </optgroup>
+                        <!-- Județul Galați -->
+                        <optgroup label="Galați">
+                            <option value="Galați">Galați</option>
+                            <option value="Tecuci">Tecuci</option>
+                            <option value="Târgu Bujor">Târgu Bujor</option>
+                        </optgroup>
+                        <!-- Județul Giurgiu -->
+                        <optgroup label="Giurgiu">
+                            <option value="Giurgiu">Giurgiu</option>
+                            <option value="Bolintin-Vale">Bolintin-Vale</option>
+                            <option value="Mihăilești">Mihăilești</option>
+                        </optgroup>
+                        <!-- Județul Gorj -->
+                        <optgroup label="Gorj">
+                            <option value="Târgu Jiu">Târgu Jiu</option>
+                            <option value="Motru">Motru</option>
+                            <option value="Rovinari">Rovinari</option>
+                        </optgroup>
+                        <!-- Județul Harghita -->
+                        <optgroup label="Harghita">
+                            <option value="Miercurea Ciuc">Miercurea Ciuc</option>
+                            <option value="Odorheiu Secuiesc">Odorheiu Secuiesc</option>
+                            <option value="Gheorgheni">Gheorgheni</option>
+                        </optgroup>
+                        <!-- Județul Hunedoara -->
+                        <optgroup label="Hunedoara">
+                            <option value="Deva">Deva</option>
+                            <option value="Hunedoara">Hunedoara</option>
+                            <option value="Petroșani">Petroșani</option>
+                            <option value="Brad">Brad</option>
+                        </optgroup>
+                        <!-- Județul Ialomița -->
+                        <optgroup label="Ialomița">
+                            <option value="Slobozia">Slobozia</option>
+                            <option value="Urziceni">Urziceni</option>
+                            <option value="Fetești">Fetești</option>
+                        </optgroup>
+                        <!-- Județul Iași -->
+                        <optgroup label="Iași">
+                            <option value="Iași">Iași</option>
+                            <option value="Pașcani">Pașcani</option>
+                            <option value="Târgu Frumos">Târgu Frumos</option>
+                        </optgroup>
+                        <!-- Județul Ilfov -->
+                        <optgroup label="Ilfov">
+                            <option value="Buftea">Buftea</option>
+                            <option value="Chitila">Chitila</option>
+                            <option value="Măgurele">Măgurele</option>
+                            <option value="Otopeni">Otopeni</option>
+                        </optgroup>
+                        <!-- Județul Maramureș -->
+                        <optgroup label="Maramureș">
+                            <option value="Baia Mare">Baia Mare</option>
+                            <option value="Sighetu Marmației">Sighetu Marmației</option>
+                            <option value="Borșa">Borșa</option>
+                        </optgroup>
+                        <!-- Județul Mehedinți -->
+                        <optgroup label="Mehedinți">
+                            <option value="Drobeta-Turnu Severin">Drobeta-Turnu Severin</option>
+                            <option value="Orșova">Orșova</option>
+                            <option value="Strehaia">Strehaia</option>
+                        </optgroup>
+                        <!-- Județul Mureș -->
+                        <optgroup label="Mureș">
+                            <option value="Târgu Mureș">Târgu Mureș</option>
+                            <option value="Reghin">Reghin</option>
+                            <option value="Sighișoara">Sighișoara</option>
+                        </optgroup>
+                        <!-- Județul Neamț -->
+                        <optgroup label="Neamț">
+                            <option value="Piatra Neamț">Piatra Neamț</option>
+                            <option value="Roman">Roman</option>
+                            <option value="Târgu Neamț">Târgu Neamț</option>
+                        </optgroup>
+                        <!-- Județul Olt -->
+                        <optgroup label="Olt">
+                            <option value="Slatina">Slatina</option>
+                            <option value="Caracal">Caracal</option>
+                            <option value="Balș">Balș</option>
+                        </optgroup>
+                        <!-- Județul Prahova -->
+                        <optgroup label="Prahova">
+                            <option value="Ploiești">Ploiești</option>
+                            <option value="Câmpina">Câmpina</option>
+                            <option value="Sinaia">Sinaia</option>
+                        </optgroup>
+                        <!-- Județul Satu Mare -->
+                        <optgroup label="Satu Mare">
+                            <option value="Satu Mare">Satu Mare</option>
+                            <option value="Carei">Carei</option>
+                            <option value="Negrești-Oaș">Negrești-Oaș</option>
+                        </optgroup>
+                        <!-- Județul Sălaj -->
+                        <optgroup label="Sălaj">
+                            <option value="Zalău">Zalău</option>
+                            <option value="Șimleu Silvaniei">Șimleu Silvaniei</option>
+                            <option value="Jibou">Jibou</option>
+                        </optgroup>
+                        <!-- Județul Sibiu -->
+                        <optgroup label="Sibiu">
+                            <option value="Sibiu">Sibiu</option>
+                            <option value="Mediaș">Mediaș</option>
+                            <option value="Cisnădie">Cisnădie</option>
+                        </optgroup>
+                        <!-- Județul Suceava -->
+                        <optgroup label="Suceava">
+                            <option value="Suceava">Suceava</option>
+                            <option value="Fălticeni">Fălticeni</option>
+                            <option value="Rădăuți">Rădăuți</option>
+                        </optgroup>
+                        <!-- Județul Teleorman -->
+                        <optgroup label="Teleorman">
+                            <option value="Alexandria">Alexandria</option>
+                            <option value="Roșiori de Vede">Roșiori de Vede</option>
+                            <option value="Turnu Măgurele">Turnu Măgurele</option>
+                        </optgroup>
+                        <!-- Județul Timiș -->
+                        <optgroup label="Timiș">
+                            <option value="Timișoara">Timișoara</option>
+                            <option value="Lugoj">Lugoj</option>
+                            <option value="Sânnicolau Mare">Sânnicolau Mare</option>
+                        </optgroup>
+                        <!-- Județul Tulcea -->
+                        <optgroup label="Tulcea">
+                            <option value="Tulcea">Tulcea</option>
+                            <option value="Babadag">Babadag</option>
+                            <option value="Măcin">Măcin</option>
+                        </optgroup>
+                        <!-- Județul Vaslui -->
+                        <optgroup label="Vaslui">
+                            <option value="Vaslui">Vaslui</option>
+                            <option value="Bârlad">Bârlad</option>
+                            <option value="Huși">Huși</option>
+                        </optgroup>
+                        <!-- Județul Vâlcea -->
+                        <optgroup label="Vâlcea">
+                            <option value="Râmnicu Vâlcea">Râmnicu Vâlcea</option>
+                            <option value="Drăgășani">Drăgășani</option>
+                            <option value="Horezu">Horezu</option>
+                        </optgroup>
+                        <!-- Județul Vrancea -->
+                        <optgroup label="Vrancea">
+                            <option value="Focșani">Focșani</option>
+                            <option value="Adjud">Adjud</option>
+                            <option value="Mărășești">Mărășești</option>
+                        </optgroup>
+                    </select>
+                    <span class="error" id="delivery-city-error">Alege o localitate.</span>
+                </div>
+            </div>
+            <div class="form-group two-columns">
+                <div>
+                    <label for="delivery-name">Nume și prenume *</label>
+                    <input type="text" id="delivery-name" placeholder="Ion Popescu" required>
+                    <span class="error" id="delivery-name-error">Introdu un nume valid.</span>
+                </div>
+                <div>
+                    <label for="delivery-phone">Număr de telefon *</label>
+                    <input type="tel" id="delivery-phone" placeholder="07XX XXX XXX" required>
+                    <span class="error" id="delivery-phone-error">Introdu un număr valid.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="delivery-address">Adresa de livrare *</label>
+                <input type="text" id="delivery-address" placeholder="Str. Exemplu, Nr. 10" required>
+                <span class="error" id="delivery-address-error">Introdu o adresă validă.</span>
+            </div>
+            <div class="form-group">
+                <label for="delivery-notes">Observații pentru livrare</label>
+                <textarea id="delivery-notes" placeholder="Ex. Sună la interfon" rows="3"></textarea>
+            </div>
+
+            <!-- Informații despre cumpărător -->
+            <h2>Informații despre cumpărător</h2>
+            <div class="form-group two-columns">
+                <div>
+                    <label for="buyer-name">Nume și prenume *</label>
+                    <input type="text" id="buyer-name" placeholder="Ion Popescu" required>
+                    <span class="error" id="buyer-name-error">Introdu un nume valid.</span>
+                </div>
+                <div>
+                    <label for="buyer-email">Email *</label>
+                    <input type="email" id="buyer-email" placeholder="ion.popescu@example.com" required>
+                    <span class="error" id="buyer-email-error">Introdu un email valid.</span>
+                </div>
+            </div>
+            <div class="form-group two-columns">
+                <div>
+                    <label for="buyer-phone">Număr de telefon *</label>
+                    <input type="tel" id="buyer-phone" placeholder="07XX XXX XXX" required>
+                    <span class="error" id="buyer-phone-error">Introdu un număr valid.</span>
+                </div>
+                <div>
+                    <label for="buyer-city">Oraș *</label>
+                    <input type="text" id="buyer-city" placeholder="București" required>
+                    <span class="error" id="buyer-city-error">Introdu un oraș valid.</span>
+                </div>
+            </div>
+            <div class="form-group two-columns">
+                <div>
+                    <label for="buyer-address">Adresa *</label>
+                    <input type="text" id="buyer-address" placeholder="Str. Exemplu, Nr. 10" required>
+                    <span class="error" id="buyer-address-error">Introdu o adresă validă.</span>
+                </div>
+                <div>
+                    <label for="buyer-country">Țară *</label>
+                    <input type="text" id="buyer-country" placeholder="România" required>
+                    <span class="error" id="buyer-country-error">Introdu o țară validă.</span>
+                </div>
+            </div>
+            
+
+            <!-- Metode de plată -->
+            <h2>Metode de plată</h2>
+            <div class="form-group payment-methods">
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="card" checked>
+                    <div class="payment-content">
+                        <img src="images/card_bancar.png" alt="Card Bancar" class="payment-icon">
+                        <span>Card bancar</span>
+                    </div>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="paypal">
+                    <div class="payment-content">
+                        <img src="images/paypalLOGO.png" alt="PayPal" class="payment-icon">
+                        <span>PayPal</span>
+                    </div>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="bank">
+                    <div class="payment-content">
+                        <img src="images/TransferBancar.png" alt="Transfer Bancar" class="payment-icon">
+                        <span>Transfer bancar</span>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Detalii plată cu card -->
+            <div id="payment-details" class="payment-details">
+                <label for="card-number">Număr card</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" pattern="\d{4}\s\d{4}\s\d{4}\s\d{4}" inputmode="numeric" required>
+                <span class="error" id="card-number-error">Introdu un număr de card valid (16 cifre).</span>
+                <div class="two-columns">
+                    <div>
+                        <label for="expiry-date">Data expirare</label>
+                        <input type="text" id="expiry-date" placeholder="MM/AA" maxlength="5" pattern="[0-1][0-9]\/[0-9]{2}" inputmode="numeric" required>
+                        <span class="error" id="expiry-date-error">Introdu o dată validă (MM/AA).</span>
+                    </div>
+                    <div>
+                        <label for="cvc">CVC</label>
+                        <input type="text" id="cvc" placeholder="123" maxlength="3" pattern="\d{3}" inputmode="numeric" required>
+                        <span class="error" id="cvc-error">Introdu un CVC valid (3 cifre).</span>
+                    </div>
+                </div>
+                <label for="card-name">Nume pe card</label>
+                <input type="text" id="card-name" placeholder="Ion Popescu" maxlength="50" pattern="[A-Za-z\s]+" required>
+                <span class="error" id="card-name-error">Numele poate conține doar litere și spații.</span>
+                <div class="card-logos">
+                    <img src="images/visa.png" alt="Visa">
+                    <img src="images/mastercard.png" alt="MasterCard">
+                </div>
+            </div>
+
+            <!-- Popup PayPal -->
+            <div id="paypal-popup" class="popup">
+                <div class="popup-content">
+                    <span class="popup-close">×</span>
+                    <h3>Plată prin PayPal</h3>
+                    <div class="paypal-mock">
+                        <img src="images/pp-logo-200px.png" alt="PayPal Logo" class="paypal-logo">
+                        <p>Conectați-vă la contul dvs. PayPal pentru a finaliza plata.</p>
+                        <form class="paypal-form">
+                            <label for="paypal-email">Email PayPal</label>
+                            <input type="email" id="paypal-email" placeholder="exemplu@paypal.com" required>
+                            <label for="paypal-password">Parolă</label>
+                            <input type="password" id="paypal-password" placeholder="••••••••" required>
+                            <button type="submit" class="paypal-btn">Conectare</button>
+                        </form>
+                        <p class="paypal-info">Plata securizată prin PayPal. Veți fi redirecționat către confirmare.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popup Transfer bancar -->
+            <div id="bank-popup" class="popup">
+                <div class="popup-content">
+                    <span class="popup-close">×</span>
+                    <h3>Plată prin Transfer bancar</h3>
+                    <div class="bank-details">
+                        <p>Vă rugăm să efectuați transferul utilizând următoarele detalii bancare:</p>
+                        <ul>
+                            <li><strong>Beneficiar:</strong> EcoSphere SRL</li>
+                            <li><strong>IBAN:</strong> RO12 BTRL RONC RT00 1234 5678</li>
+                            <li><strong>Banca:</strong> Banca Transilvania</li>
+                            <li><strong>Cod SWIFT:</strong> BTRLRO22</li>
+                            <li><strong>Suma:</strong> [Valoare comandă] RON</li>
+                            <li><strong>Referință:</strong> Comanda #[Număr comandă]</li>
+                        </ul>
+                        <p class="bank-info">După efectuarea transferului, vă rugăm să ne trimiteți confirmarea la <a href="mailto:plati@ecosphere.com">plati@ecosphere.com</a>. Procesarea comenzii va începe după confirmarea plății.</p>
+                        <button class="bank-btn" onclick="alert('Detaliile au fost copiate în clipboard (funcționalitate simulată).')">Copiază detalii</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terms">
+                <p>Prin plasarea unei comenzi sunteți de acord cu <a href="extra/termeni-si-conditii.html">Termeni și condiții</a> ce guvernează acest magazin.</p>
+                <p class="description">Citește termenii și condițiile pentru a înțelege drepturile și obligațiile tale.</p>
+                <p>Plată în siguranță cu PayPal, MasterCard, Visa, Visa Electron, Transfer bancar.</p>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Plătește acum</button>
+            </div>
+        </form>
+
+        <!-- Informații suplimentare -->
+        <div class="extra-info">
+            <div>
+                <h2>Categorii populare</h2>
+                <ul>
+                    <li>
+                        <a href="extra/cele-mai-vandute.html">Cele mai vândute produse</a>
+                        <p class="description">Vezi care sunt cele mai populare produse alese de clienții noștri.</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h2>Companie</h2>
+                <ul>
+                    <li>
+                        <a href="extra/despre-noi.html">Despre noi</a>
+                        <p class="description">Află mai multe despre misiunea și valorile EcoSphere.</p>
+                    </li>
+                    <li>
+                        <a href="extra/contact.html">Contact</a>
+                        <p class="description">Contactează-ne pentru întrebări sau suport.</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h2>Întrebări frecvente</h2>
+                <ul>
+                    <li>
+                        <a href="extra/stadiul-comenzii-mele.html">Stadiul comenzii mele</a>
+                        <p class="description">Verifică statusul comenzii tale în timp real.</p>
+                    </li>
+                    <li>
+                        <a href="extra/cum-comand.html">Cum comand?</a>
+                        <p class="description">Ghid pas cu pas pentru a plasa o comandă.</p>
+                    </li>
+                    <li>
+                        <a href="extra/cum-platesc.html">Cum plătesc?</a>
+                        <p class="description">Află ce metode de plată acceptăm și cum funcționează.</p>
+                    </li>
+                    <li>
+                        <a href="extra/informatii-despre-livrare.html">Informații despre livrare</a>
+                        <p class="description">Detalii despre procesul și costurile de livrare.</p>
+                    </li>
+                    <li>
+                        <a href="extra/alte-intrebari.html">Alte întrebări</a>
+                        <p class="description">Răspunsuri la alte întrebări frecvente despre produse și servicii.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:contact@ecosphere.com">contact@ecosphere.com</a> | Instagram: @EcoSphere</p>
+        <p><a href="#" onclick="alert('Contactează-ne pentru detalii despre investiții!')">Investitori</a> | © 2025 EcoSphere</p>
+    </footer>
+
+    <!-- Include Paymentwall JavaScript Library -->
+    <script src="https://api.paymentwall.com/api/lib/paymentwall.js"></script>
+    <!-- Link to external JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSphere - Grădina ta smart, oriunde</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; color: #333; }
+    
+        /* Header fix */
+        header { position: fixed; top: 0; width: 100%; background: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000; }
+        header img { height: 50px; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: #2e7d32; font-weight: bold; transition: color 0.3s; }
+        nav ul li a:hover { color: #4CAF50; }
+    
+        /* Hero Section */
+        .hero { background: url('images/hero.jpg') no-repeat center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .hero-content { animation: fadeIn 1.5s ease-in; }
+        .hero h1 { font-size: 3em; }
+        .hero p { font-size: 1.5em; margin: 10px 0; }
+        .btn { background: #4CAF50; color: white; padding: 12px 25px; border: none; cursor: pointer; transition: background 0.3s; text-decoration: none; display: inline-block; text-align: center; }
+        .btn:hover { background: #45a049; }
+    
+        /* Secțiuni */
+        .section { padding: 80px 20px; text-align: center; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .section.visible { opacity: 1; transform: translateY(0); }
+        .features { display: flex; flex-wrap: wrap; justify-content: space-around; background: #fff; }
+        .feature { width: 30%; min-width: 250px; margin: 20px; }
+        .feature img { width: 100%; height: 300px; object-fit: cover; }
+    
+        .team { background: #f9f9f9; }
+        .team-grid { display: flex; flex-wrap: wrap; justify-content: center; }
+        .team-member { width: 25%; min-width: 200px; margin: 20px; }
+        .team-member img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
+    
+        /* Footer */
+        footer { background: #2e7d32; color: white; padding: 20px; text-align: center; }
+        footer a { color: #e0f2e9; text-decoration: none; }
+    
+        /* Animații */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature, .team-member { width: 100%; }
+            .hero h1 { font-size: 2em; }
+            .hero p { font-size: 1.2em; }
+            nav ul { flex-direction: column; position: absolute; top: 70px; right: 20px; background: #fff; padding: 10px; display: none; }
+            nav ul.active { display: flex; }
+        }
+    
+        /* Styles for JavaScript Enhancements */
+        .cart-item-img {
+            max-width: 60px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+    
+        .cart-item-img:hover {
+            transform: scale(1.1);
+        }
+    
+        .empty-cart {
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+    
+        .invalid {
+            border: 2px solid #e74c3c;
+            transition: border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="images/logo.png" alt="EcoSphere Logo">
+        <nav>
+            <ul>
+                <li><a href="#home">Acasă</a></li>
+                <li><a href="#features">Caracteristici</a></li>
+                <li><a href="#team">Echipa</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="payment.html">Plată</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Grădina ta smart, oriunde</h1>
+            <p>Sustenabilitate și tehnologie într-un sistem compact de 749-1099 RON.</p>
+            <a href="payment.html" class="btn" id="preorder-btn">Precomandă acum</a>
+        </div>
+    </section>
+
+    <!-- Caracteristici -->
+    <section id="features" class="section features">
+        <h2>De ce EcoSphere?</h2>
+        <div class="feature">
+            <img src="images/tech.jpg" alt="Tehnologie Smart">
+            <h3>Tehnologie Smart</h3>
+            <p>LED-uri optimizate și senzori pentru o creștere perfectă.</p>
+        </div>
+        <div class="feature">
+            <img src="images/design.jpg" alt="Design Modular">
+            <h3>Design Modular</h3>
+            <p>30x30x50 cm, în alb minimalist, lemn natur sau negru mat.</p>
+        </div>
+        <div class="feature">
+            <img src="images/sustain.jpg" alt="Sustenabilitate">
+            <h3>Sustenabilitate</h3>
+            <p>Microplante în 7-10 zile, verdețuri în 3-4 săptămâni.</p>
+        </div>
+    </section>
+
+    <!-- Echipa -->
+    <section id="team" class="section team">
+        <h2>Echipa noastră</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="images/mircea.jpg" alt="Ungureanu Mircea">
+                <h3>Ungureanu Mircea</h3>
+                <p>„O persoană pasionată de sustenabilitate vrea să aducă natura mai aproape...”</p>
+            </div>
+            <div class="team-member">
+                <img src="images/teodor.jpg" alt="Lupancu Teodor Gabriel">
+                <h3>Lupancu Teodor Gabriel</h3>
+                <p>„Combină tehnologia automatizată cu designul compact...”</p>
+            </div>
+            <div class="team-member">
+                <img src="images/alexandru.jpg" alt="Sandu Alexandru">
+                <h3>Sandu Alexandru</h3>
+                <p>„Își propune să transforme agricultura urbană...”</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:contact@ecosphere.com">contact@ecosphere.com</a> | Instagram: @EcoSphere</p>
+        <p><a href="#" onclick="alert('Contactează-ne pentru detalii despre investiții!')">Investitori</a> | © 2025 EcoSphere</p>
+    </footer>
+
+    <!-- Script pentru animații la scroll -->
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+
+    <!-- Link to external JavaScript for cart functionality -->
+    <script src="js/script.js"></script>
+</body>
+</html>
