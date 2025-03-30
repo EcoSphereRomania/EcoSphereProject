@@ -8,15 +8,43 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; color: #333; }
-    
+        
         /* Header fix */
         header { position: fixed; top: 0; width: 100%; background: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000; }
         header img { height: 50px; }
+        .logo-container { display: flex; align-items: center; }
         nav ul { list-style: none; display: flex; }
         nav ul li { margin-left: 20px; }
         nav ul li a { text-decoration: none; color: #2e7d32; font-weight: bold; transition: color 0.3s; }
         nav ul li a:hover { color: #4CAF50; }
-    
+        
+        /* Instagram Button Styles */
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            margin-left: 10px; /* Space between logo and Instagram button */
+            transition: opacity 0.3s ease;
+        }
+        .instagram-btn:hover {
+            opacity: 0.8; /* Slight fade effect on hover */
+        }
+        .instagram-icon {
+            width: 30px; /* Adjust size as needed */
+            height: 30px;
+            vertical-align: middle;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        
         /* Hero Section */
         .hero { background: url('images/hero.jpg') no-repeat center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
         .hero-content { animation: fadeIn 1.5s ease-in; }
@@ -24,29 +52,30 @@
         .hero p { font-size: 1.5em; margin: 10px 0; }
         .btn { background: #4CAF50; color: white; padding: 12px 25px; border: none; cursor: pointer; transition: background 0.3s; text-decoration: none; display: inline-block; text-align: center; }
         .btn:hover { background: #45a049; }
-    
+        
         /* Secțiuni */
         .section { padding: 80px 20px; text-align: center; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
         .section.visible { opacity: 1; transform: translateY(0); }
         .features { display: flex; flex-wrap: wrap; justify-content: space-around; background: #fff; }
         .feature { width: 30%; min-width: 250px; margin: 20px; }
         .feature img { width: 100%; height: 300px; object-fit: cover; }
-    
+        
         .team { background: #f9f9f9; }
         .team-grid { display: flex; flex-wrap: wrap; justify-content: center; }
         .team-member { width: 25%; min-width: 200px; margin: 20px; }
         .team-member img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
-    
+        
         /* Footer */
         footer { background: #2e7d32; color: white; padding: 20px; text-align: center; }
         footer a { color: #e0f2e9; text-decoration: none; }
-    
+        footer a:hover { color: #fff; }
+        
         /* Animații */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-    
+        
         /* Responsive */
         @media (max-width: 768px) {
             .feature, .team-member { width: 100%; }
@@ -54,8 +83,10 @@
             .hero p { font-size: 1.2em; }
             nav ul { flex-direction: column; position: absolute; top: 70px; right: 20px; background: #fff; padding: 10px; display: none; }
             nav ul.active { display: flex; }
+            .instagram-btn { margin-left: 5px; }
+            .instagram-icon { width: 24px; height: 24px; }
         }
-    
+        
         /* Styles for JavaScript Enhancements */
         .cart-item-img {
             max-width: 60px;
@@ -64,18 +95,15 @@
             margin-right: 10px;
             transition: transform 0.3s ease;
         }
-    
         .cart-item-img:hover {
             transform: scale(1.1);
         }
-    
         .empty-cart {
             color: #777;
             font-style: italic;
             text-align: center;
             padding: 20px;
         }
-    
         .invalid {
             border: 2px solid #e74c3c;
             transition: border-color 0.3s ease;
@@ -85,7 +113,13 @@
 <body>
     <!-- Header -->
     <header>
-        <img src="images/logo.png" alt="EcoSphere Logo">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="EcoSphere Logo">
+            <a href="https://www.instagram.com/eco_sphere_romania/" class="instagram-btn" target="_blank" aria-label="Follow us on Instagram">
+                <img src="images/instagram.png" alt="Instagram" class="instagram-icon">
+                <span class="sr-only">Instagram</span>
+            </a>
+        </div>
         <nav>
             <ul>
                 <li><a href="#home">Acasă</a></li>
@@ -152,7 +186,9 @@
     <footer id="contact">
         <h3>Contact</h3>
         <p>Email: <a href="mailto:contact@ecosphere.com">contact@ecosphere.com</a> | Instagram: @EcoSphere</p>
-        <p><a href="#" onclick="alert('Contactează-ne pentru detalii despre investiții!')">Investitori</a> | © 2025 EcoSphere</p>
+        <p>
+            <a href="#" onclick="alert('Contactează-ne pentru detalii despre investiții!')">Investitori</a> | © 2025 EcoSphere
+        </p>
     </footer>
 
     <!-- Script pentru animații la scroll -->
