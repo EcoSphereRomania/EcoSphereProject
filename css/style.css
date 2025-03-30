@@ -36,6 +36,40 @@ header img:hover {
     transform: scale(1.05);
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 10px; /* Space between logo and Instagram button */
+    transition: opacity 0.3s ease;
+}
+
+.instagram-btn:hover {
+    opacity: 0.8; /* Slight fade effect on hover */
+}
+
+.instagram-icon {
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    vertical-align: middle;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -957,5 +991,12 @@ footer a:hover {
     }
     .quantity-controls {
         margin-left: 76px;
+    }
+    .instagram-icon {
+        width: 24px;
+        height: 24px;
+    }
+    .instagram-btn {
+        margin-left: 5px;
     }
 }
